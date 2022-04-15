@@ -1,14 +1,15 @@
 package sc.stqa.pft.litecart.tests;
 
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+import static org.testng.Assert.assertEquals;
+
 
 public class AdminLogin extends TestBase{
-    private WebDriverWait wait;
 
     @Test
     public void testAdminLogin() {
-        wait = new WebDriverWait(app.driver, 10);
+        app.goTo().adminHomePage();
+        assertEquals(app.goTo().whereAmI(),"Template | My Store");
 
     }
 }

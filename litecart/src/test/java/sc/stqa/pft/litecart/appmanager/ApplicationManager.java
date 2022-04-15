@@ -45,7 +45,7 @@ public class ApplicationManager {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
         driver.get(properties.getProperty("web.baseUrl"));
 
-        navigationHelper = new NavigationHelper(driver);
+        navigationHelper = new NavigationHelper(driver, properties);
 
     }
 
@@ -55,6 +55,10 @@ public class ApplicationManager {
         if (!"".equals(verificationErrorString)) {
             fail(verificationErrorString);
         }
+    }
+
+    public NavigationHelper goTo() {
+        return navigationHelper;
     }
 
 }

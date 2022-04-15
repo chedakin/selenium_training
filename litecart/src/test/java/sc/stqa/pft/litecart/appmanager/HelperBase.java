@@ -3,13 +3,17 @@ package sc.stqa.pft.litecart.appmanager;
 import org.openqa.selenium.*;
 
 import java.io.File;
+import java.util.Properties;
 
 public class HelperBase {
+
     public boolean acceptNextAlert = true;
     protected WebDriver driver;
+    protected Properties properties;
 
-    public HelperBase(WebDriver driver) {
+    public HelperBase(WebDriver driver, Properties properties) {
         this.driver = driver;
+        this.properties = properties;
     }
 
     protected void type(By locator, String text) {
@@ -40,6 +44,10 @@ public class HelperBase {
         } catch (NoSuchElementException e) {
             return false;
         }
+    }
+
+    protected void navigateLink(String url){
+        driver.get(String.format("%s%s", properties.getProperty("web.baseUrl"), url));
     }
 
     public boolean isAlertPresent() {

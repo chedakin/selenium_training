@@ -9,6 +9,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 public class MyFirstTest {
@@ -23,7 +25,7 @@ public class MyFirstTest {
         //System.setProperty("webdriver.chrome.driver","C:\\JavaTmp\\chromedriver.exe");
         //System.setProperty("webdriver.edge.driver","C:\\JavaTmp\\msedgedriver.exe");
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     @Test
