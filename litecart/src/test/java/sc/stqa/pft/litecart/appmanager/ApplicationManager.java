@@ -19,6 +19,7 @@ public class ApplicationManager {
     public WebDriver driver;
 
     private NavigationHelper navigationHelper;
+    private MainPageHelper mainPageHelper;
 
     public StringBuffer verificationErrors = new StringBuffer();
     private String browser;
@@ -46,6 +47,7 @@ public class ApplicationManager {
         driver.get(properties.getProperty("web.baseUrl"));
 
         navigationHelper = new NavigationHelper(driver, properties);
+        mainPageHelper = new MainPageHelper(driver,properties);
 
     }
 
@@ -60,6 +62,8 @@ public class ApplicationManager {
     public NavigationHelper goTo() {
         return navigationHelper;
     }
+
+    public MainPageHelper mainPage() {return mainPageHelper; }
 
 }
 

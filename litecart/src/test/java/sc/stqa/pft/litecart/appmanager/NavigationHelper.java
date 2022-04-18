@@ -2,7 +2,6 @@ package sc.stqa.pft.litecart.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -15,15 +14,7 @@ public class NavigationHelper extends HelperBase {
     public NavigationHelper(WebDriver driver, Properties properties) {
         super(driver, properties);
     }
-/*
-    public void homePage() {
-        if (isElementPresent(By.id("maintable"))){
-            return;
-        }
-        click(By.linkText("home"));
-    }
 
- */
     public void adminHomePage() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));;
 
@@ -46,6 +37,10 @@ public class NavigationHelper extends HelperBase {
 
     public void dashboard(){
         click(By.id("logotype"));
+    }
+
+    public void mainPage() {
+        click(By.cssSelector("#header .logotype"));
     }
 
     public String whereAmI(){
