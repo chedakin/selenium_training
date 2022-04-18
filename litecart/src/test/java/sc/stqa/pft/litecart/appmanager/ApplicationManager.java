@@ -20,6 +20,7 @@ public class ApplicationManager {
 
     private NavigationHelper navigationHelper;
     private MainPageHelper mainPageHelper;
+    private  CountriesHelper countriesHelper;
 
     public StringBuffer verificationErrors = new StringBuffer();
     private String browser;
@@ -48,6 +49,7 @@ public class ApplicationManager {
 
         navigationHelper = new NavigationHelper(driver, properties);
         mainPageHelper = new MainPageHelper(driver,properties);
+        countriesHelper = new CountriesHelper(driver, properties);
 
     }
 
@@ -64,6 +66,8 @@ public class ApplicationManager {
     }
 
     public MainPageHelper mainPage() {return mainPageHelper; }
+
+    public CountriesHelper countries() {return countriesHelper; }
 
 }
 
