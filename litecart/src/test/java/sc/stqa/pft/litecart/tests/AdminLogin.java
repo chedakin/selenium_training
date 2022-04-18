@@ -9,7 +9,7 @@ public class AdminLogin extends TestBase{
     @Test
     public void testAdminLogin() {
         app.goTo().adminHomePage();
-        assertEquals(app.goTo().whereAmI(),"Template | My Store");
+        assertEquals(app.goTo().whereAmI(),"Dashboard | My Store");
 
     }
 }

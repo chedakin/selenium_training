@@ -2,6 +2,7 @@ package sc.stqa.pft.litecart.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -32,12 +33,26 @@ public class NavigationHelper extends HelperBase {
         type(By.name("password"), properties.getProperty("web.adminPassword"));
         click(By.xpath("//button[@name='login']"));
         wait.until(titleIs("Dashboard | My Store"));
-        click(By.xpath("//ul[@id='box-apps-menu']/li/a/span[2]"));
-        //navigateLink("admin/?app=appearance&doc=template");
-        wait.until(titleIs("Template | My Store"));
+    }
+
+    public void menu(String title){
+        click(By.cssSelector(String.format("ul#box-apps-menu li[data-code = %s] a span.name",title)));
+        //click(By.xpath("//ul[@id='box-apps-menu']/li[@data-code='appearance']/a/span[@class='name']"));
+    }
+
+    public void subMenu(String title, String subTitle) {
+        click(By.cssSelector(String.format("ul#box-apps-menu li[data-code = %s] li[data-code = %s]",title, subTitle)));
+    }
+
+    public void dashboard(){
+        click(By.id("logotype"));
     }
 
     public String whereAmI(){
         return driver.getTitle();
+    }
+
+    public String getPageHeader() {
+        return driver.findElement(By.cssSelector("div.panel-heading")).getText();
     }
 }

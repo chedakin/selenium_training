@@ -42,7 +42,7 @@ public class ApplicationManager {
             driver = new EdgeDriver();
         }
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get(properties.getProperty("web.baseUrl"));
 
         navigationHelper = new NavigationHelper(driver, properties);
