@@ -4,7 +4,17 @@ import java.util.Objects;
 
 public class Country {
     public String name;
+    public  String code;
     public int zones;
+
+    public String getCode() {
+        return code;
+    }
+
+    public Country withCode(String code) {
+        this.code = code;
+        return this;
+    }
 
     public String getName() {
         return name;
@@ -28,6 +38,7 @@ public class Country {
     public String toString() {
         return "Country{" +
                 "name='" + name + '\'' +
+                ", code='" + code + '\'' +
                 ", zones=" + zones +
                 '}';
     }
@@ -37,11 +48,11 @@ public class Country {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Country country = (Country) o;
-        return zones == country.zones && Objects.equals(name, country.name);
+        return zones == country.zones && Objects.equals(name, country.name) && Objects.equals(code, country.code);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, zones);
+        return Objects.hash(name, code, zones);
     }
 }
