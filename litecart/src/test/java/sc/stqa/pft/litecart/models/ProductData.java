@@ -5,7 +5,7 @@ import java.util.Objects;
 public class ProductData {
     private String productName;
     private String regularPrice;
-    private String salePrice;
+    private String campaignPrice;
     private String company;
 
     public String getProductName() {
@@ -26,12 +26,12 @@ public class ProductData {
         return this;
     }
 
-    public String getSalePrice() {
-        return salePrice;
+    public String getCampaignPrice() {
+        return campaignPrice;
     }
 
-    public ProductData withSalePrice(String salePrice) {
-        this.salePrice = salePrice;
+    public ProductData withCampaignPrice(String salePrice) {
+        this.campaignPrice = salePrice;
         return this;
     }
 
@@ -45,25 +45,26 @@ public class ProductData {
     }
 
     @Override
-    public String toString() {
-        return "ProductData{" +
-                "productName='" + productName + '\'' +
-                ", regularPrice='" + regularPrice + '\'' +
-                ", salePrice='" + salePrice + '\'' +
-                ", company='" + company + '\'' +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProductData that = (ProductData) o;
-        return Objects.equals(productName, that.productName) && Objects.equals(regularPrice, that.regularPrice) && Objects.equals(salePrice, that.salePrice) && Objects.equals(company, that.company);
+        return Objects.equals(productName, that.productName) && Objects.equals(regularPrice, that.regularPrice) && Objects.equals(campaignPrice, that.campaignPrice) && Objects.equals(company, that.company);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productName, regularPrice, salePrice, company);
+        return Objects.hash(productName, regularPrice, campaignPrice, company);
     }
+
+    @Override
+    public String toString() {
+        return "ProductData{" +
+                ", productName='" + productName + '\'' +
+                ", regularPrice='" + regularPrice + '\'' +
+                ", campaignPrice='" + campaignPrice + '\'' +
+                ", company='" + company + '\'' +
+                '}';
+    }
+
 }

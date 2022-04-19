@@ -1,7 +1,7 @@
 package sc.stqa.pft.litecart.tests;
 
 import org.testng.annotations.Test;
-import sc.stqa.pft.litecart.models.GeoZones;
+import sc.stqa.pft.litecart.models.Products;
 
 
 public class TemporaryTests extends TestBase{
@@ -9,15 +9,9 @@ public class TemporaryTests extends TestBase{
     @Test
     public void testTemporary() {
 
-        app.goTo().adminHomePage();
-        app.goTo().menu("geo_zones");
+        Products cp = app.mainPage().getCampaignProducts();
 
-        GeoZones geoZones = app.geoZone().getAllGeoZones();
-
-        System.out.println(geoZones);
-
-
-
+        System.out.println(cp);
 
     }
 
