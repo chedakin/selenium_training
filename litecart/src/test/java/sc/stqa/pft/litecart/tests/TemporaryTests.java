@@ -1,13 +1,12 @@
 package sc.stqa.pft.litecart.tests;
 
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import sc.stqa.pft.litecart.models.Country;
-import sc.stqa.pft.litecart.models.CountryZone;
+import sc.stqa.pft.litecart.models.CountryZones;
+import sc.stqa.pft.litecart.models.GeoZones;
 
-import java.util.List;
+import java.util.stream.Collectors;
 
-import static org.testng.Assert.assertEquals;
 
 public class TemporaryTests extends TestBase{
 
@@ -15,17 +14,11 @@ public class TemporaryTests extends TestBase{
     public void testTemporary() {
 
         app.goTo().adminHomePage();
-        app.goTo().menu("countries");
+        app.goTo().menu("geo_zones");
 
-        Country country = new Country().withName("Australia").withCode("AU").withZones(8);
+        GeoZones geoZones = app.geoZone().getAllGeoZones();
 
-        app.countries().editCountry(country);
-
-        System.out.println(country);
-
-        List<CountryZone> zones = app.countries().getAllCountryZones();
-
-        System.out.println(zones);
+        System.out.println(geoZones);
 
 
 

@@ -2,19 +2,20 @@ package sc.stqa.pft.litecart.tests;
 
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+import sc.stqa.pft.litecart.models.Countries;
 import sc.stqa.pft.litecart.models.Country;
-import sc.stqa.pft.litecart.models.CountryZone;
+import sc.stqa.pft.litecart.models.CountryZones;
 
-import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.testng.Assert.assertEquals;
 
 public class CountriesTests extends TestBase {
 
-    private List<Country> allCountries;
+    private Countries allCountries;
 
     @BeforeSuite
-    public void adminAccount() {
+    public void countriesPageSetup() {
         app.goTo().adminHomePage();
         app.goTo().menu("countries");
         allCountries = app.countries().getAllCountries();
@@ -23,8 +24,8 @@ public class CountriesTests extends TestBase {
     @Test(enabled = true)
     public void testCountriesListAlphabetical () {
 
-        List<Country> countries = allCountries;
-        List<Country> sortedCountries = countries.stream().sorted((c1,c2)-> c1.getName().compareTo(c2.getName())).toList();
+        Countries countries = allCountries;
+        Countries sortedCountries = new Countries(countries.stream().sorted((c1, c2)-> c1.getName().compareTo(c2.getName())).collect(Collectors.toSet()));
         assertEquals(countries, sortedCountries);
 
     }
@@ -32,11 +33,11 @@ public class CountriesTests extends TestBase {
     @Test(enabled = true)
     public void testZonesListAlphabetical() {
 
-        List<Country> countriesWithZones = allCountries.stream().filter((c) -> c.getZones() != 0).toList();
+        Countries countriesWithZones = new Countries(allCountries.stream().filter((c) -> c.getZones() != 0).collect(Collectors.toSet()));
         for(Country country : countriesWithZones) {
             app.countries().editCountry(country);
-            List<CountryZone> zones = app.countries().getAllCountryZones();
-            List<CountryZone> sortedZones = zones.stream().sorted((z1,z2)-> z1.getName().compareTo(z2.getName())).toList();
+            CountryZones zones = app.countries().getAllCountryZones();
+            CountryZones sortedZones = new CountryZones(zones.stream().sorted((z1, z2)-> z1.getName().compareTo(z2.getName())).collect(Collectors.toSet()));
             assertEquals(zones, sortedZones);
             app.goTo().menu("countries");
         }

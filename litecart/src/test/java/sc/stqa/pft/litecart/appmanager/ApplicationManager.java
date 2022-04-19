@@ -20,7 +20,8 @@ public class ApplicationManager {
 
     private NavigationHelper navigationHelper;
     private MainPageHelper mainPageHelper;
-    private  CountriesHelper countriesHelper;
+    private CountriesHelper countriesHelper;
+    private GeoZonesHelper geoZonesHelper;
 
     public StringBuffer verificationErrors = new StringBuffer();
     private String browser;
@@ -50,6 +51,7 @@ public class ApplicationManager {
         navigationHelper = new NavigationHelper(driver, properties);
         mainPageHelper = new MainPageHelper(driver,properties);
         countriesHelper = new CountriesHelper(driver, properties);
+        geoZonesHelper = new GeoZonesHelper(driver, properties);
 
     }
 
@@ -65,9 +67,10 @@ public class ApplicationManager {
         return navigationHelper;
     }
 
-    public MainPageHelper mainPage() {return mainPageHelper; }
+    public MainPageHelper mainPage() { return mainPageHelper; }
 
-    public CountriesHelper countries() {return countriesHelper; }
+    public CountriesHelper countries() { return countriesHelper; }
 
+    public  GeoZonesHelper geoZone() { return geoZonesHelper; }
 }
 
