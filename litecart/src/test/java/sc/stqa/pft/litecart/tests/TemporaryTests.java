@@ -1,11 +1,7 @@
 package sc.stqa.pft.litecart.tests;
 
 import org.testng.annotations.Test;
-import sc.stqa.pft.litecart.models.Country;
-import sc.stqa.pft.litecart.models.CountryZones;
 import sc.stqa.pft.litecart.models.GeoZones;
-
-import java.util.stream.Collectors;
 
 
 public class TemporaryTests extends TestBase{

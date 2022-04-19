@@ -6,33 +6,33 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Countries extends ForwardingSet<Country> {
-    private Set<Country> delegate;
+public class Countries extends ForwardingSet<CountryData> {
+    private Set<CountryData> delegate;
 
     @Override
-    protected Set<Country> delegate() {
+    protected Set<CountryData> delegate() {
         return delegate;
     }
 
     public Countries() {
-        this.delegate = new HashSet<Country>();
+        this.delegate = new HashSet<CountryData>();
     }
 
     public Countries(Countries countries) {
-        this.delegate = new HashSet<Country>(countries.delegate);
+        this.delegate = new HashSet<CountryData>(countries.delegate);
     }
 
-    public Countries(Collection<Country> countries) {
-        this.delegate = new HashSet<Country>(countries);
+    public Countries(Collection<CountryData> countries) {
+        this.delegate = new HashSet<CountryData>(countries);
     }
 
-    public Countries withAdded(Country country){
+    public Countries withAdded(CountryData country){
         Countries countries = new Countries(this);
         countries.add(country);
         return countries;
     }
 
-    public Countries without(Country country){
+    public Countries without(CountryData country){
         Countries countries = new Countries(this);
         countries.remove(country);
         return countries;

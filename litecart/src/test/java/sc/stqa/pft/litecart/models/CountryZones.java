@@ -6,33 +6,33 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-public class CountryZones extends ForwardingSet<CountryZone> {
-    private Set<CountryZone> delegate;
+public class CountryZones extends ForwardingSet<CountryZoneData> {
+    private Set<CountryZoneData> delegate;
 
     @Override
-    protected Set<CountryZone> delegate() {
+    protected Set<CountryZoneData> delegate() {
         return delegate;
     }
 
     public CountryZones() {
-        this.delegate = new HashSet<CountryZone>();
+        this.delegate = new HashSet<CountryZoneData>();
     }
 
     public CountryZones(CountryZones countryZones) {
-        this.delegate = new HashSet<CountryZone>(countryZones.delegate);
+        this.delegate = new HashSet<CountryZoneData>(countryZones.delegate);
     }
 
-    public CountryZones(Collection<CountryZone> countryZones) {
-        this.delegate = new HashSet<CountryZone>(countryZones);
+    public CountryZones(Collection<CountryZoneData> countryZones) {
+        this.delegate = new HashSet<CountryZoneData>(countryZones);
     }
 
-    public CountryZones withAdded(CountryZone countryZone){
+    public CountryZones withAdded(CountryZoneData countryZone){
         CountryZones countryZones = new CountryZones(this);
         countryZones.add(countryZone);
         return countryZones;
     }
 
-    public CountryZones without(CountryZone countryZone){
+    public CountryZones without(CountryZoneData countryZone){
         CountryZones countryZones = new CountryZones(this);
         countryZones.remove(countryZone);
         return countryZones;

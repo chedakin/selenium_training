@@ -4,11 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import sc.stqa.pft.litecart.models.Countries;
-import sc.stqa.pft.litecart.models.Country;
-import sc.stqa.pft.litecart.models.CountryZone;
+import sc.stqa.pft.litecart.models.CountryData;
+import sc.stqa.pft.litecart.models.CountryZoneData;
 import sc.stqa.pft.litecart.models.CountryZones;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -18,7 +17,7 @@ public class CountriesHelper extends HelperBase{
         super(driver, properties);
     }
 
-    public void editCountry(Country country) {
+    public void editCountry(CountryData country) {
         click(By.linkText(country.getName()));
     }
 
@@ -29,7 +28,7 @@ public class CountriesHelper extends HelperBase{
 
         for(WebElement row : rows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            zones.add(new CountryZone()
+            zones.add(new CountryZoneData()
                     .withName(cells.get(2).findElement(By.tagName("input")).getAttribute("value"))
                     .withCode(cells.get(1).findElement(By.tagName("input")).getAttribute("value")));
         }
@@ -43,7 +42,7 @@ public class CountriesHelper extends HelperBase{
 
         for(WebElement row : rows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            countries.add(new Country()
+            countries.add(new CountryData()
                     .withName(cells.get(4).getAttribute("textContent"))
                     .withCode(cells.get(3).getAttribute("textContent"))
                     .withZones(Integer.parseInt(cells.get(5).getAttribute("textContent"))));

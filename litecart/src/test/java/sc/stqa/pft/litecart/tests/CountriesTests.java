@@ -3,7 +3,7 @@ package sc.stqa.pft.litecart.tests;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import sc.stqa.pft.litecart.models.Countries;
-import sc.stqa.pft.litecart.models.Country;
+import sc.stqa.pft.litecart.models.CountryData;
 import sc.stqa.pft.litecart.models.CountryZones;
 
 import java.util.stream.Collectors;
@@ -34,7 +34,7 @@ public class CountriesTests extends TestBase {
     public void testZonesListAlphabetical() {
 
         Countries countriesWithZones = new Countries(allCountries.stream().filter((c) -> c.getZones() != 0).collect(Collectors.toSet()));
-        for(Country country : countriesWithZones) {
+        for(CountryData country : countriesWithZones) {
             app.countries().editCountry(country);
             CountryZones zones = app.countries().getAllCountryZones();
             CountryZones sortedZones = new CountryZones(zones.stream().sorted((z1, z2)-> z1.getName().compareTo(z2.getName())).collect(Collectors.toSet()));

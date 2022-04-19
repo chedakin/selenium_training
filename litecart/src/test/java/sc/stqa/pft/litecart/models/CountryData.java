@@ -2,15 +2,25 @@ package sc.stqa.pft.litecart.models;
 
 import java.util.Objects;
 
-public class GeoZone {
-    private String name;
-    private int zones;
+public class CountryData {
+    public String name;
+    public  String code;
+    public int zones;
+
+    public String getCode() {
+        return code;
+    }
+
+    public CountryData withCode(String code) {
+        this.code = code;
+        return this;
+    }
 
     public String getName() {
         return name;
     }
 
-    public GeoZone withName(String name) {
+    public CountryData withName(String name) {
         this.name = name;
         return this;
     }
@@ -19,15 +29,16 @@ public class GeoZone {
         return zones;
     }
 
-    public GeoZone withZones(int zones) {
+    public CountryData withZones(int zones) {
         this.zones = zones;
         return this;
     }
 
     @Override
     public String toString() {
-        return "GeoZone{" +
+        return "Country{" +
                 "name='" + name + '\'' +
+                ", code='" + code + '\'' +
                 ", zones=" + zones +
                 '}';
     }
@@ -36,12 +47,12 @@ public class GeoZone {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GeoZone geoZone = (GeoZone) o;
-        return zones == geoZone.zones && Objects.equals(name, geoZone.name);
+        CountryData country = (CountryData) o;
+        return zones == country.zones && Objects.equals(name, country.name) && Objects.equals(code, country.code);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, zones);
+        return Objects.hash(name, code, zones);
     }
 }

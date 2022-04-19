@@ -1,10 +1,8 @@
 package sc.stqa.pft.litecart.tests;
 
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import sc.stqa.pft.litecart.models.Countries;
-import sc.stqa.pft.litecart.models.GeoZone;
+import sc.stqa.pft.litecart.models.GeoZoneData;
 import sc.stqa.pft.litecart.models.GeoZones;
 
 import java.util.List;
@@ -29,7 +27,7 @@ public class GeoZonesTests extends TestBase {
             return;
         }
 
-        for(GeoZone geoZone : allGeoZones) {
+        for(GeoZoneData geoZone : allGeoZones) {
             app.geoZone().editGeoZone(geoZone);
             List<String> countries = app.geoZone().getCountriesForZone();
             List<String> sortedCountries = countries.stream().sorted().toList();

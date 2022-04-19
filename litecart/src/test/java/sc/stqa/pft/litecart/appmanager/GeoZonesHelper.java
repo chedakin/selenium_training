@@ -22,14 +22,14 @@ public class GeoZonesHelper extends HelperBase {
 
         for(WebElement row : rows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            geoZones.add(new GeoZone()
+            geoZones.add(new GeoZoneData()
                     .withName(cells.get(2).findElement(By.tagName("a")).getAttribute("textContent"))
                     .withZones(Integer.parseInt(cells.get(3).getAttribute("textContent"))));
         }
         return geoZones;
     }
 
-    public void editGeoZone(GeoZone geoZone) {
+    public void editGeoZone(GeoZoneData geoZone) {
         click(By.linkText(geoZone.getName()));
     }
 
