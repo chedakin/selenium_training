@@ -28,6 +28,7 @@ public class GeoZonesTests extends TestBase {
         }
 
         for(GeoZoneData geoZone : allGeoZones) {
+            app.goTo().menu("geo_zones");
             app.geoZone().editGeoZone(geoZone);
             List<String> countries = app.geoZone().getCountriesForZone();
             List<String> sortedCountries = countries.stream().sorted().toList();
