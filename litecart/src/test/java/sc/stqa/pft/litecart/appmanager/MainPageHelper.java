@@ -2,8 +2,10 @@ package sc.stqa.pft.litecart.appmanager;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.Color;
+import org.openqa.selenium.support.ui.Select;
 import sc.stqa.pft.litecart.models.ProductData;
 import sc.stqa.pft.litecart.models.Products;
+import sc.stqa.pft.litecart.models.UserData;
 
 import java.util.List;
 import java.util.Properties;
@@ -110,5 +112,45 @@ public class MainPageHelper extends HelperBase {
             return false;
         }
     }
+
+    public void loginUser(String email, String password) {
+        click(By.cssSelector("div#default-menu li[class='account dropdown'] a.dropdown-toggle"));
+        type(By.cssSelector("form[name=login_form] input[type=email]"), email);
+        type(By.cssSelector("form[name=login_form] input[type=password]"), password);
+        click(By.cssSelector("form[name=login_form] button[type=submit]"));
+    }
+
+    public void logoutUser () {
+        click(By.cssSelector("div#default-menu li[class='account dropdown'] a.dropdown-toggle"));
+        click(By.linkText("Logout"));
+    }
+
+    public void registerUser(UserData user) {
+        click(By.cssSelector("div#default-menu li[class='account dropdown'] a.dropdown-toggle"));
+        click(By.linkText("New customers click here"));
+
+        acceptCookies();
+
+        WebElement creteAccount = driver.findElement(By.cssSelector("section#box-create-account"));
+
+        type(creteAccount.findElement(By.name("firstname")), user.getFirstName());
+        type(creteAccount.findElement(By.name("lastname")), user.getLastName());
+        type(creteAccount.findElement(By.name("postcode")), user.getPostalCode());
+
+        Select country = new Select(creteAccount.findElement(By.name("country_code")));
+        country.selectByVisibleText(user.getCountry());
+        Select state = new Select(creteAccount.findElement(By.name("zone_code")));
+        state.selectByVisibleText(user.getState());
+
+        type(creteAccount.findElement(By.name("email")), user.getEmail());
+        type(creteAccount.findElement(By.name("password")), user.getPassword());
+        type(creteAccount.findElement(By.name("confirmed_password")), user.getPassword());
+
+        click(creteAccount.findElement(By.name("terms_agreed")));
+        click(creteAccount.findElement(By.name("create_account")));
+
+    }
+
+
 
 }

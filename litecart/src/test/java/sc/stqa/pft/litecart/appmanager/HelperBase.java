@@ -27,6 +27,17 @@ public class HelperBase {
         }
     }
 
+    protected void type(WebElement element, String text) {
+        element.click();
+        if (text != null){
+            String existingText = element.getAttribute("value");
+            if (! text.equals(existingText)) {
+                element.clear();
+                element.sendKeys(text);
+            }
+        }
+    }
+
     protected void attach(By locator, File file) {
         if (file != null){
             driver.findElement(locator).sendKeys(file.getAbsolutePath());
@@ -35,6 +46,10 @@ public class HelperBase {
 
     protected void click(By locator) {
         driver.findElement(locator).click();
+    }
+
+    protected void click(WebElement element) {
+        element.click();
     }
 
     public boolean isElementPresent(By by) {
@@ -71,6 +86,12 @@ public class HelperBase {
             return alertText;
         } finally {
             acceptNextAlert = true;
+        }
+    }
+
+    public void acceptCookies() {
+        if(isElementPresent(By.name("accept_cookies"))) {
+            click(By.name("accept_cookies"));
         }
     }
 }
