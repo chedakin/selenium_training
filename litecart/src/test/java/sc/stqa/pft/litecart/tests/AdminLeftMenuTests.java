@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
-public class LeftMenuTests extends TestBase{
+public class AdminLeftMenuTests extends TestBase{
 
     @BeforeSuite
     public void adminAccount(){

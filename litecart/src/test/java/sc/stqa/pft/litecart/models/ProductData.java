@@ -10,8 +10,8 @@ public class ProductData {
     private String category;
     private String sku;
     private String keywords;
-    private Date validFrom;
-    private Date validTo;
+    private String validFrom;
+    private String validTo;
     private String regularPrice;
     private String campaignPrice;
     private String company;
@@ -95,20 +95,20 @@ public class ProductData {
         return this;
     }
 
-    public Date getValidFrom() {
+    public String getValidFrom() {
         return validFrom;
     }
 
-    public ProductData withValidFrom(Date validFrom) {
+    public ProductData withValidFrom(String validFrom) {
         this.validFrom = validFrom;
         return this;
     }
 
-    public Date getValidTo() {
+    public String getValidTo() {
         return validTo;
     }
 
-    public ProductData withValidTo(Date validTo) {
+    public ProductData withValidTo(String validTo) {
         this.validTo = validTo;
         return this;
     }

@@ -23,6 +23,7 @@ public class ApplicationManager {
     private CountriesHelper countriesHelper;
     private GeoZonesHelper geoZonesHelper;
     private ProductHelper productHelper;
+    private CatalogHelper catalogHelper;
 
     public StringBuffer verificationErrors = new StringBuffer();
     private String browser;
@@ -54,6 +55,7 @@ public class ApplicationManager {
         countriesHelper = new CountriesHelper(driver, properties);
         geoZonesHelper = new GeoZonesHelper(driver, properties);
         productHelper = new ProductHelper(driver, properties);
+        catalogHelper = new CatalogHelper(driver, properties);
 
     }
 
@@ -76,5 +78,7 @@ public class ApplicationManager {
     public  GeoZonesHelper geoZone() { return geoZonesHelper; }
 
     public  ProductHelper product() { return productHelper; }
+
+    public  CatalogHelper catalog() { return catalogHelper; }
 }
 

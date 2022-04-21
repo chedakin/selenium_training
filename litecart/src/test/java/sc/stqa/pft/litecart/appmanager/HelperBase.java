@@ -44,6 +44,12 @@ public class HelperBase {
         }
     }
 
+    protected void attach(WebElement element, File file) {
+        if (file != null){
+            element.sendKeys(file.getAbsolutePath());
+        }
+    }
+
     protected void click(By locator) {
         driver.findElement(locator).click();
     }
