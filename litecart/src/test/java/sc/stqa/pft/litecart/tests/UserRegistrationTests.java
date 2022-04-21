@@ -9,6 +9,7 @@ public class UserRegistrationTests extends TestBase {
     @BeforeSuite
     public void startFromMainPage() {
         app.goTo().mainPage();
+        app.mainPage().acceptCookies();
     }
 
     @Test

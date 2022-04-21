@@ -129,8 +129,6 @@ public class MainPageHelper extends HelperBase {
         click(By.cssSelector("div#default-menu li[class='account dropdown'] a.dropdown-toggle"));
         click(By.linkText("New customers click here"));
 
-        acceptCookies();
-
         WebElement creteAccount = driver.findElement(By.cssSelector("section#box-create-account"));
 
         type(creteAccount.findElement(By.name("firstname")), user.getFirstName());
