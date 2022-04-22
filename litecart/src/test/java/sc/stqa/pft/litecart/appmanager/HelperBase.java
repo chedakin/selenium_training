@@ -1,8 +1,10 @@
 package sc.stqa.pft.litecart.appmanager;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.time.Duration;
 import java.util.Properties;
 
 public class HelperBase {
@@ -10,10 +12,12 @@ public class HelperBase {
     public boolean acceptNextAlert = true;
     protected WebDriver driver;
     protected Properties properties;
+    protected WebDriverWait wait;
 
     public HelperBase(WebDriver driver, Properties properties) {
         this.driver = driver;
         this.properties = properties;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     protected void type(By locator, String text) {

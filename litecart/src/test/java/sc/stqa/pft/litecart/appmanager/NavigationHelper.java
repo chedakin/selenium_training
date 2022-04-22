@@ -43,6 +43,10 @@ public class NavigationHelper extends HelperBase {
         click(By.cssSelector("#header .logotype"));
     }
 
+    public void cart() {
+        click(By.cssSelector("div#cart"));
+    }
+
     public String whereAmI(){
         return driver.getTitle();
     }
@@ -50,4 +54,7 @@ public class NavigationHelper extends HelperBase {
     public String getPageHeader() {
         return driver.findElement(By.cssSelector("div.panel-heading")).getText();
     }
+
+
+
 }

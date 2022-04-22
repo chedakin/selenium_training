@@ -149,6 +149,8 @@ public class MainPageHelper extends HelperBase {
 
     }
 
-
+    public void viewPopularProduct() {
+        click(By.cssSelector("section#box-popular-products article.product a.link"));
+    }
 
 }

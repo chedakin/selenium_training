@@ -24,6 +24,7 @@ public class ApplicationManager {
     private GeoZonesHelper geoZonesHelper;
     private ProductHelper productHelper;
     private CatalogHelper catalogHelper;
+    private CartHelper cartHelper;
 
     public StringBuffer verificationErrors = new StringBuffer();
     private String browser;
@@ -56,6 +57,7 @@ public class ApplicationManager {
         geoZonesHelper = new GeoZonesHelper(driver, properties);
         productHelper = new ProductHelper(driver, properties);
         catalogHelper = new CatalogHelper(driver, properties);
+        cartHelper = new CartHelper(driver,properties);
 
     }
 
@@ -71,14 +73,28 @@ public class ApplicationManager {
         return navigationHelper;
     }
 
-    public MainPageHelper mainPage() { return mainPageHelper; }
+    public MainPageHelper mainPage() {
+        return mainPageHelper;
+    }
 
-    public CountriesHelper countries() { return countriesHelper; }
+    public CountriesHelper countries() {
+        return countriesHelper;
+    }
 
-    public  GeoZonesHelper geoZone() { return geoZonesHelper; }
+    public  GeoZonesHelper geoZone() {
+        return geoZonesHelper;
+    }
 
-    public  ProductHelper product() { return productHelper; }
+    public  ProductHelper product() {
+        return productHelper;
+    }
 
-    public  CatalogHelper catalog() { return catalogHelper; }
+    public  CatalogHelper catalog() {
+        return catalogHelper;
+    }
+
+    public CartHelper cart() {
+        return cartHelper;
+    }
 }
 

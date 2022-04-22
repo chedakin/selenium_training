@@ -1,12 +1,16 @@
 package sc.stqa.pft.litecart.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.Color;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import sc.stqa.pft.litecart.models.ProductData;
 
 import java.util.Properties;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 public class ProductHelper extends HelperBase{
 
@@ -93,6 +97,32 @@ public class ProductHelper extends HelperBase{
             return true;
         } else {
             return false;
+        }
+    }
+
+    public int productsInCart() {
+        String quantity = driver.findElement(By.cssSelector("div#cart div[class='badge quantity']")).getAttribute("textContent");
+        if(quantity.equals("")) {
+            return 0;
+        } else {
+            return Integer.parseInt(quantity);
+        }
+    }
+
+    public void addProductToCart() throws InterruptedException {
+        int productsInCart = productsInCart();
+
+        long now = System.currentTimeMillis();
+        long time = System.currentTimeMillis();
+        while ( time < now+10000) {
+            try {
+                click(By.cssSelector("article#box-product button[name=add_cart_product]"));
+                wait.until(ExpectedConditions.textToBe(By.cssSelector("div#cart div[class='badge quantity']"), String.valueOf(productsInCart + 1)));
+                break;
+            } catch (ElementClickInterceptedException e) {
+                Thread.sleep(500);
+            }
+
         }
     }
 }
