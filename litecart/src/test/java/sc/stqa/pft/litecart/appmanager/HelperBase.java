@@ -104,4 +104,12 @@ public class HelperBase {
             click(By.name("accept_cookies"));
         }
     }
+
+    public void maximizeWindow() {
+        driver.manage().window().maximize();
+    }
+
+    public void refreshPage() {
+        driver.navigate().refresh();
+    }
 }

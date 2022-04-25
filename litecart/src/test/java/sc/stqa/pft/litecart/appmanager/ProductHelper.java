@@ -111,18 +111,8 @@ public class ProductHelper extends HelperBase{
 
     public void addProductToCart() throws InterruptedException {
         int productsInCart = productsInCart();
+        click(By.cssSelector("article#box-product button[name=add_cart_product]"));
+        wait.until(ExpectedConditions.textToBe(By.cssSelector("div#cart div[class='badge quantity']"), String.valueOf(productsInCart + 1)));
 
-        long now = System.currentTimeMillis();
-        long time = System.currentTimeMillis();
-        while ( time < now+10000) {
-            try {
-                click(By.cssSelector("article#box-product button[name=add_cart_product]"));
-                wait.until(ExpectedConditions.textToBe(By.cssSelector("div#cart div[class='badge quantity']"), String.valueOf(productsInCart + 1)));
-                break;
-            } catch (ElementClickInterceptedException e) {
-                Thread.sleep(500);
-            }
-
-        }
     }
 }

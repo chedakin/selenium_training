@@ -18,8 +18,9 @@ public class ProductCartTests extends TestBase {
         app.goTo().mainPage();
     }
 
-    @Test
+    @Test(enabled = true)
     public void testAddProductToCart() throws InterruptedException {
+        app.mainPage().maximizeWindow();
         int productsInCart = app.product().productsInCart();
 
         app.goTo().mainPage();
@@ -45,9 +46,10 @@ public class ProductCartTests extends TestBase {
 
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testRemoveProductFromCart() throws InterruptedException {
         app.goTo().mainPage();
+        app.mainPage().maximizeWindow();
         if(app.product().productsInCart()<3) {
             app.mainPage().viewPopularProduct();
             app.product().addProductToCart();
