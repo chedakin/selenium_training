@@ -25,6 +25,7 @@ public class ApplicationManager {
     private ProductHelper productHelper;
     private CatalogHelper catalogHelper;
     private CartHelper cartHelper;
+    private WindowHelper windowHelper;
 
     public StringBuffer verificationErrors = new StringBuffer();
     private String browser;
@@ -58,6 +59,7 @@ public class ApplicationManager {
         productHelper = new ProductHelper(driver, properties);
         catalogHelper = new CatalogHelper(driver, properties);
         cartHelper = new CartHelper(driver,properties);
+        windowHelper = new WindowHelper(driver,properties);
 
     }
 
@@ -95,6 +97,10 @@ public class ApplicationManager {
 
     public CartHelper cart() {
         return cartHelper;
+    }
+
+    public WindowHelper window() {
+        return windowHelper;
     }
 }
 

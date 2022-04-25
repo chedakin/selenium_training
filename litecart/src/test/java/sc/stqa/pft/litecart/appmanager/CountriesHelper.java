@@ -50,4 +50,14 @@ public class CountriesHelper extends HelperBase{
         return countries;
     }
 
+    public void openExternalLink (String label) {
+        List<WebElement> allLabels = driver.findElements(By.tagName("label"));
+        for(WebElement linkLabel : allLabels) {
+            if(linkLabel.getAttribute("textContent").equals(label)){
+                click(linkLabel.findElement(By.cssSelector("a[href*=http]")));
+                break;
+            }
+        }
+    }
+
 }
