@@ -1,6 +1,7 @@
 package sc.stqa.pft.litecart.appmanager;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
@@ -111,5 +112,9 @@ public class HelperBase {
 
     public void refreshPage() {
         driver.navigate().refresh();
+    }
+
+    public LogEntries getBrowserLogs() {
+       return driver.manage().logs().get("browser");
     }
 }

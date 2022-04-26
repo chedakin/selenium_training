@@ -5,6 +5,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.Browser;
+import org.openqa.selenium.support.events.EventFiringDecorator;
+import org.openqa.selenium.support.events.WebDriverListener;
+import sc.stqa.pft.litecart.tests.MyTestListener;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -17,6 +21,7 @@ public class ApplicationManager {
 
     private final Properties properties;
     public WebDriver driver;
+    public WebDriverListener listener = new MyTestListener();
 
     private NavigationHelper navigationHelper;
     private MainPageHelper mainPageHelper;
@@ -42,11 +47,14 @@ public class ApplicationManager {
         properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
 
         if (Objects.equals(browser, Browser.FIREFOX.browserName())) {
-            driver = new FirefoxDriver();
+            //driver = new FirefoxDriver();
+            driver = new EventFiringDecorator(listener).decorate(new FirefoxDriver());
         } else if (Objects.equals(browser, Browser.CHROME.browserName())) {
-            driver = new ChromeDriver();
+            //driver = new ChromeDriver();
+            driver = new EventFiringDecorator(listener).decorate(new ChromeDriver());
         } else if (Objects.equals(browser, Browser.EDGE.browserName())) {
-            driver = new EdgeDriver();
+            //driver = new EdgeDriver();
+            driver = new EventFiringDecorator(listener).decorate(new EdgeDriver());
         }
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

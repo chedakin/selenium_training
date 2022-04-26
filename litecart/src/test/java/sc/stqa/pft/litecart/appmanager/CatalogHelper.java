@@ -83,4 +83,10 @@ public class CatalogHelper extends HelperBase {
         click(By.linkText(product.getCategory()));
         return isElementPresent(By.linkText(product.getProductName()));
     }
+
+    public void editProduct(ProductData product) {
+        click(By.linkText(product.getCategory()));
+        click(By.linkText(product.getProductName()));
+    }
+
 }
